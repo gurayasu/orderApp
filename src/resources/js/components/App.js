@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import GlobalNav from "./GlobalNav";
 import Top from "./Top";
 import About from "./About";
+import { Menus } from "../containers/Menus";
+import { Orders } from "../containers/Orders";
 import Register from "./Register";
 import Login from "./Login";
 import axios from "axios";
@@ -29,6 +31,12 @@ function App() {
                 </Route>
                 <Route path="/about">
                     <About />
+                </Route>
+                <Route path="/menus">
+                    <Menus />
+                </Route>
+                <Route path="/orders">
+                    <Orders />
                 </Route>
                 <Route path="/register">
                     <Register />

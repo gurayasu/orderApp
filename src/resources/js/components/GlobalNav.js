@@ -59,6 +59,16 @@ function GlobalNav() {
                     <span>About</span>
                 </Link>
             </li>
+            <li>
+                <Link to="/menus">
+                    <span>Menu</span>
+                </Link>
+            </li>
+            <li>
+                <Link to="/orders">
+                    <span>Order</span>
+                </Link>
+            </li>
             {AuthButtons}
         </ul>
     );
