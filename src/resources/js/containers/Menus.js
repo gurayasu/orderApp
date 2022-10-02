@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useReducer } from "react";
+import React, { Fragment, useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import { MenuWrapper } from "../components/MenuWrapper";
 import Skeleton from "@material-ui/lab/Skeleton";
 import MainLogo from "../images/logo.png";
 import FoodImage from "../images/food-image.jpg";
+import { MenuOrderDialog } from "../components/MenuOrderDialog";
 
 import { fetchMenus } from "../apis/menus";
 import {
@@ -48,6 +49,13 @@ const ItemWrapper = styled.div`
 
 export const Menus = () => {
     const [menusState, dispatch] = useReducer(menusReducer, menusInitialState);
+
+    const initialState = {
+        isOpenOrderDialog: false,
+        selectedMenu: null,
+        selectedMenuCount: 1,
+    };
+    const [state, setState] = useState(initialState);
 
     useEffect(() => {
         dispatch({ type: menusActionTypes.FETCHING });
@@ -92,13 +100,31 @@ export const Menus = () => {
                         <ItemWrapper key={menu.id}>
                             <MenuWrapper
                                 menu={menu}
-                                onClickMenuWrapper={(menu) => console.log(menu)}
+                                onClickMenuWrapper={(menu) =>
+                                    setState({
+                                        ...state,
+                                        isOpenOrderDialog: true,
+                                        selectedMenu: menu,
+                                    })
+                                }
                                 imageUrl={FoodImage}
                             />
                         </ItemWrapper>
                     ))
                 )}
             </MenusList>
+            {state.isOpenOrderDialog && (
+                <MenuOrderDialog
+                    menu={state.selectedMenu}
+                    isOpen={state.isOpenOrderDialog}
+                    onClose={() =>
+                        setState({
+                            ...state,
+                            isOpenOrderDialog: false,
+                        })
+                    }
+                />
+            )}
         </Fragment>
     );
 };
