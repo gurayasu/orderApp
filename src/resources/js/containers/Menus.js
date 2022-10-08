@@ -47,6 +47,11 @@ const ItemWrapper = styled.div`
     margin: 16px;
 `;
 
+const submitOrder = () => {
+    // 後ほど仮注文のAPIを実装します
+    console.log("登録ボタンが押された！");
+};
+
 export const Menus = () => {
     const [menusState, dispatch] = useReducer(menusReducer, menusInitialState);
 
@@ -117,10 +122,27 @@ export const Menus = () => {
                 <MenuOrderDialog
                     menu={state.selectedMenu}
                     isOpen={state.isOpenOrderDialog}
+                    countNumber={state.selectedFoodCount}
+                    onClickCountUp={() =>
+                        setState({
+                            ...state,
+                            selectedMenuCount: state.selectedMenuCount + 1,
+                        })
+                    }
+                    onClickCountDown={() =>
+                        setState({
+                            ...state,
+                            selectedMenuCount: state.selectedMenuCount - 1,
+                        })
+                    }
+                    // 先ほど作った関数を渡します
+                    onClickOrder={() => submitOrder()}
                     onClose={() =>
                         setState({
                             ...state,
                             isOpenOrderDialog: false,
+                            selectedMenu: null,
+                            selectedMenuCount: 1,
                         })
                     }
                 />

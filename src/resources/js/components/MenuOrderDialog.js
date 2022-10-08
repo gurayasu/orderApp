@@ -9,6 +9,9 @@ import styled from "styled-components";
 
 // components
 import { SubText } from "./StyledText";
+import { CountUpButton } from "./Buttons/CountUpButton";
+import { CountDownButton } from "./Buttons/CountDownButton";
+import { OrderButton } from "./Buttons/OrderButton";
 
 // images
 import OrderHeaderImage from "../images/order-header.png";
@@ -23,7 +26,41 @@ const DescriptionWrapper = styled.div`
     height: 50px;
 `;
 
-export const MenuOrderDialog = ({ menu, isOpen, onClose }) => {
+const CountersWrapper = styled.div`
+    margin-right: auto;
+    display: flex;
+    padding: 0 16px;
+`;
+
+const CountItem = styled.div`
+    margin: 0 8px;
+`;
+
+const CountNum = styled.div`
+    padding-top: 10px;
+`;
+
+const OrderTextWrapper = styled.div`
+    display: flex;
+`;
+
+const OrderButtonTextWrapper = styled.div`
+    width: 300px;
+`;
+
+const PriceWrapper = styled.div`
+    padding-top: 4px;
+`;
+
+export const MenuOrderDialog = ({
+    menu,
+    countNumber,
+    isOpen,
+    onClose,
+    onClickCountUp,
+    onClickCountDown,
+    onClickOrder,
+}) => {
     return (
         <Dialog open={isOpen} onClose={onClose}>
             <OrderHeader src={OrderHeaderImage} alt="order header" />
@@ -34,7 +71,35 @@ export const MenuOrderDialog = ({ menu, isOpen, onClose }) => {
                 </DescriptionWrapper>
             </DialogContent>
             <DialogActions>
-                // 数量を操作するアクションを入れる予定
+                <CountersWrapper>
+                    <CountItem>
+                        <CountDownButton
+                            onClick={() => onClickCountDown()}
+                            // 数量が1以下だったら、カウントダウンさせない
+                            isDisabled={countNumber <= 1}
+                        />
+                    </CountItem>
+                    <CountItem>
+                        <CountNum>{countNumber}</CountNum>
+                    </CountItem>
+                    <CountItem>
+                        <CountUpButton
+                            onClick={() => onClickCountUp()}
+                            // 数量が9以上だったら、カウントアップさせない
+                            isDisabled={countNumber >= 9}
+                        />
+                    </CountItem>
+                </CountersWrapper>
+                <OrderButton onClick={() => onClickOrder()}>
+                    <OrderTextWrapper>
+                        <OrderButtonTextWrapper>
+                            {`${countNumber}点を注文に追加`}
+                        </OrderButtonTextWrapper>
+                        <PriceWrapper>
+                            {`¥${countNumber * menu.menu_price}`}
+                        </PriceWrapper>
+                    </OrderTextWrapper>
+                </OrderButton>
             </DialogActions>
         </Dialog>
     );
