@@ -6,6 +6,7 @@ import {
     DialogActions,
 } from "@material-ui/core";
 import styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
 
 // components
 import { SubText } from "./StyledText";
@@ -14,16 +15,23 @@ import { CountDownButton } from "./Buttons/CountDownButton";
 import { OrderButton } from "./Buttons/OrderButton";
 
 // images
-import OrderHeaderImage from "../images/order-header.png";
+// import OrderHeaderImage from "https://drive.google.com/file/d/178GN_Miwr5jeDhuYyRE4q6xn914EZzUQ/view?usp=sharing";
+
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Typography from "@material-ui/core/Typography";
 
 const OrderHeader = styled.img`
     width: 100%;
-    height: 350px;
+    height: auto;
 `;
 
 const DescriptionWrapper = styled.div`
     padding: 0 8px 8px 8px;
-    height: 50px;
+    height: 30px;
 `;
 
 const CountersWrapper = styled.div`
@@ -48,9 +56,15 @@ const OrderButtonTextWrapper = styled.div`
     width: 300px;
 `;
 
-const PriceWrapper = styled.div`
-    padding-top: 4px;
-`;
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
 
 export const MenuOrderDialog = ({
     menu,
@@ -60,16 +74,47 @@ export const MenuOrderDialog = ({
     onClickCountUp,
     onClickCountDown,
     onClickOrder,
+    onChangeSearch,
 }) => {
+    const classes = useStyles();
+
     return (
         <Dialog open={isOpen} onClose={onClose}>
-            <OrderHeader src={OrderHeaderImage} alt="order header" />
+            <OrderHeader
+                src={
+                    "https://drive.google.com/uc?id=1pmKFeHJAfNzo4giW7voDQS5jYXHkKS8q"
+                }
+                alt="order header"
+            />
             <DialogTitle>{menu.menu_name}</DialogTitle>
             <DialogContent>
                 <DescriptionWrapper>
                     <SubText>{menu.description}</SubText>
                 </DescriptionWrapper>
             </DialogContent>
+            <DialogActions>
+                <Typography variant="h6" component="h6">
+                    テーブル番号選択
+                </Typography>
+                <FormControl
+                    className={classes.formControl}
+                    margin-bottom="15px"
+                >
+                    <InputLabel>テーブル番号</InputLabel>
+                    <Select
+                        onChange={(e) => {
+                            onChangeSearch(e);
+                            console.log(e.target.value);
+                        }}
+                    >
+                        <MenuItem value={1}>1</MenuItem>
+                        <MenuItem value={2}>2</MenuItem>
+                        <MenuItem value={3}>3</MenuItem>
+                        <MenuItem value={4}>4</MenuItem>
+                        <MenuItem value={5}>5</MenuItem>
+                    </Select>
+                </FormControl>
+            </DialogActions>
             <DialogActions>
                 <CountersWrapper>
                     <CountItem>
@@ -95,9 +140,9 @@ export const MenuOrderDialog = ({
                         <OrderButtonTextWrapper>
                             {`${countNumber}点を注文に追加`}
                         </OrderButtonTextWrapper>
-                        <PriceWrapper>
+                        {/* <PriceWrapper>
                             {`¥${countNumber * menu.menu_price}`}
-                        </PriceWrapper>
+                        </PriceWrapper> */}
                     </OrderTextWrapper>
                 </OrderButton>
             </DialogActions>
