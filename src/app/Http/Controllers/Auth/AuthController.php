@@ -76,4 +76,11 @@ class AuthController extends Controller
             'message'=>'ログアウト成功',
         ]);
     }
+
+    public function fetchUserInfo(){
+        $user = auth()->user()->tokens()->get();
+        $userInfo = User::where('id',$user[0]->tokenable_id
+    )->get();
+        return response()->json($userInfo,200);
+    }
 }

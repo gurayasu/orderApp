@@ -20,7 +20,8 @@ const Wrapper = styled.div`
 
 const MenuDetail = styled.div`
     padding: 24px 16px;
-    width: 250px;
+    width: 150px;
+    margin: 0 auto;
 `;
 
 const DescriptionWrapper = styled.div`
@@ -42,7 +43,7 @@ export const MenuWrapper = ({ menu, onClickMenuWrapper, imageUrl }) => (
             <DescriptionWrapper>
                 <SubText>{menu.description}</SubText>
             </DescriptionWrapper>
-            <PriceWrapper>¥{menu.menu_price}</PriceWrapper>
+            {/* <PriceWrapper>¥{menu.menu_price}</PriceWrapper> */}
         </MenuDetail>
         <MenuImageNode src={imageUrl} />
     </Wrapper>

@@ -17,7 +17,14 @@ class ApiOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     //[Order]orderを作成
-    public function createOrder(Request $request,$menu_id,$menu_num){
+    public function createOrder(Request $request,$menu_id){
+
+        Log::debug($menu_id);
+        Log::debug($request->menu_num);
+        Log::debug($request);
+
+        $menu_num=$request->menu_num;
+        $table_num=$request->table_num;
 
         $user = Auth::user();
         $user_id = $user->id;
@@ -38,6 +45,7 @@ class ApiOrderController extends Controller
             'menu_id'=>$menu_id,
             'menu_num'=>$menu_num,
             'order_price'=>$order_price,
+            'table_num'=>$table_num,
             'account_id'=>$account_currnet['id'],
         ]);
 
@@ -60,14 +68,24 @@ class ApiOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     //[Order]userごとのaccount,orderを表示
-    public function userOrder(Request $request){
+    public function userOrder(){
 
         $user = Auth::user();
         $user_id = $user->id;
-        $account_currnet = Account::where(['user_id' => $user_id],['paid_flag'=>0])->first();
+        $account_currnet = Account::where('user_id',$user_id)->where('paid_flag',0)->first();
+
+        // $account_currnet_arrary=$account_currnet->toArray();
+        // Log::debug($account_currnet);
+        // Log::debug($account_currnet_arrary);
+        // Log::debug($account_currnet_arrary['id']);
 
         //withでaccountとそれに紐づくorderの情報取得
-        $account_order=Account::with('orders')->find($account_currnet['id']);
+        $account_order=Account::where('id',"=",$account_currnet['id'])
+        ->with(['orders' => function ($query){
+            $query->join('menus', 'orders.menu_id', '=', 'menus.id');
+        }])
+        ->first();
+
         return response()->json($account_order,200);
     }
 }

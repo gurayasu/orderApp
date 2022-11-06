@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function () {
+// Route::get('/{any}', function () {
+//     return view('index');
+// })->where('any', '.*');
+
+Route::get('/', function () {
     return view('index');
-})->where('any', '.*');
+});
 
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // 以下、LINEログイン系のルーティング
-
-// Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
-
-// Route::get('/callback', 'LineLoginController@callback')->name('callback');
+Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
+Route::get('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
 
