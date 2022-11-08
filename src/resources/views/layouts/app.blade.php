@@ -16,8 +16,14 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    @if(config('app.env') === 'production')
+    <!-- Styles -->
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    @else
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @endif
+
 </head>
 <body>
     <div id="app">
