@@ -26290,6 +26290,7 @@ function Login() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                   type: "submit",
                   className: "btn btn-primary",
+                  cursor: "pointer",
                   children: "Login"
                 })
               })]

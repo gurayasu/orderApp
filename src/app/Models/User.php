@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'line_user_id' // 追加
+        'line_id' // 追加
     ];
 
     /**
@@ -32,7 +32,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'line_user_id' // 追加
+        'line_id' // 追加
     ];
 
     /**
@@ -51,5 +51,9 @@ class User extends Authenticatable
 
     public function accounts() {
         return $this->hasOne(Account::class,'user_id','id');
+    }
+
+    public function providers() {
+        return $this->hasMany(Provider::class,'user_id','id');
     }
 }

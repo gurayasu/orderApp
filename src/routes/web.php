@@ -23,10 +23,16 @@ Route::get('/', function () {
 });
 
 // Auth::routes();
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // 以下、LINEログイン系のルーティング
 Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
 Route::get('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
 
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+  });
+  
+  Route::controller(OAuthController::class)->group(function() {
+    Route::get('/auth/google/callback', 'googleAuthCallback');
+  });
