@@ -83,6 +83,7 @@ function Login() {
                                     <button
                                         type="submit"
                                         className="btn btn-primary"
+                                        cursor="pointer"
                                     >
                                         Login
                                     </button>

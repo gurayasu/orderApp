@@ -7,6 +7,7 @@ use App\Http\Controllers\API\ApiAccountController;
 use App\Http\Controllers\API\ApiMenuController;
 use App\Http\Controllers\API\ApiOrderController;
 use App\Http\Controllers\API\ApiAdmiController;
+use App\Http\Controllers\LoginController;
 use App\Models\Menu;
 
 /*
@@ -27,8 +28,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::get('login/{providers}', [LoginController::class, 'redirectToProvider']);
+Route::get('login/{providers}/callback', [LoginController::class, 'handleProviderCallback']);
+
 Route::middleware('auth:sanctum')->group(function() {
 Route::group(['middleware' => 'api'], function () {
+
+Route::get('/test', static function () {
+    $status = ['status' => 200, 'message' => 'success'];
+    return compact('status');
+});
 
 //[Menu]一覧を表示
 Route::get('/menu/index',[ApiMenuController::class,'indexMenu']);

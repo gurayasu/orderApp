@@ -47,15 +47,7 @@ class LoginController extends Controller
      * 外部サービスの認証ページへリダイレクトする。
      */
     public function redirectToProvider() {
-        // return Socialite::driver('line')->redirect();
-        $nonce_token = Str::random(40);
-
-        return Socialite::driver('line')
-            ->setScopes(['openid', 'profile'])
-            ->with([
-                'nonce' => $nonce_token,
-            ])
-            ->redirect();
+        return Socialite::driver('line')->redirect();
     }
 
     /**
@@ -65,11 +57,12 @@ class LoginController extends Controller
         $line_user = Socialite::driver('line')->user();
 
         $user = User::firstOrCreate(
-            ['line_user_id' => $line_user->id],
+            ['line_id' => $line_user->id],
             ['name' => $line_user->name]
         );
 
         $this->guard()->login($user, true);
+        Auth::login($user, true);
         return $this->sendLoginResponse($request);
     }
 }
