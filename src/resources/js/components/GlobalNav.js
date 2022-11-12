@@ -26,6 +26,7 @@ export default function GlobalNav() {
     const fetchUser = () => {
         axios.get(`/api/fetchuser`).then((res) => {
             setUserRole(res.data[0].role);
+            return res;
         });
     };
     const history = useHistory();
@@ -44,11 +45,25 @@ export default function GlobalNav() {
     };
 
     const classes = useStyles();
+
+    const [userInfo, setUserInfo] = useState("");
     useEffect(() => {
-        fetchUser();
+        axios.get(`/api/fetchuser`).then((res) => {
+            console.log(res.data);
+            setUserInfo(res.data);
+            location.reload();
+            //     if (res) {
+            //         console.log(res);
+            //         location.reload();
+            //     }
+            //
+        });
     }, []);
 
-    if (!localStorage.getItem("auth_token")) {
+    console.log(localStorage);
+
+    // if (!localStorage.getItem("auth_token")) {
+    if (!userInfo) {
         return (
             <>
                 {/* <div className={classes.root}> */}

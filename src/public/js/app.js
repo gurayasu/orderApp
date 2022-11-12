@@ -25978,6 +25978,7 @@ function GlobalNav() {
   var fetchUser = function fetchUser() {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/fetchuser").then(function (res) {
       setUserRole(res.data[0].role);
+      return res;
     });
   };
 
@@ -25997,11 +25998,26 @@ function GlobalNav() {
   };
 
   var classes = useStyles();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchUser();
-  }, []);
 
-  if (!localStorage.getItem("auth_token")) {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      userInfo = _useState4[0],
+      setUserInfo = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/fetchuser").then(function (res) {
+      console.log(res.data);
+      setUserInfo(res.data);
+      location.reload(); //     if (res) {
+      //         console.log(res);
+      //         location.reload();
+      //     }
+      //
+    });
+  }, []);
+  console.log(localStorage); // if (!localStorage.getItem("auth_token")) {
+
+  if (!userInfo) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__["default"], {
         container: true,
@@ -26290,7 +26306,7 @@ function Login() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                   type: "submit",
                   className: "btn btn-primary",
-                  cursor: "pointer",
+                  ontouchend: loginSubmit,
                   children: "Login"
                 })
               })]

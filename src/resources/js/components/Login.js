@@ -83,7 +83,7 @@ function Login() {
                                     <button
                                         type="submit"
                                         className="btn btn-primary"
-                                        cursor="pointer"
+                                        ontouchend={loginSubmit}
                                     >
                                         Login
                                     </button>
