@@ -51,7 +51,6 @@ export default function GlobalNav() {
         axios.get(`/api/fetchuser`).then((res) => {
             console.log(res.data);
             setUserInfo(res.data);
-            location.reload();
             //     if (res) {
             //         console.log(res);
             //         location.reload();

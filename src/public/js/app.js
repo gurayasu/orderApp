@@ -26007,8 +26007,7 @@ function GlobalNav() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/fetchuser").then(function (res) {
       console.log(res.data);
-      setUserInfo(res.data);
-      location.reload(); //     if (res) {
+      setUserInfo(res.data); //     if (res) {
       //         console.log(res);
       //         location.reload();
       //     }
