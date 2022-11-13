@@ -58,144 +58,140 @@ export default function GlobalNav() {
     console.log(localStorage);
 
     // if (!localStorage.getItem("auth_token")) {
-    if (!userInfo) {
-        return (
-            <>
-                {/* <div className={classes.root}> */}
-                <Grid
-                    container
-                    alignItems="center"
-                    justifyContent="center"
-                    direction="column"
-                    spacing={6}
-                >
-                    <Grid item xs={6}>
-                        <Link to="/register">
-                            <Fab variant="extended">
-                                <NavigationIcon
-                                    className={classes.extendedIcon}
-                                />
-                                新規登録
-                            </Fab>
-                        </Link>
-                    </Grid>
-                    {/* </div> */}
-                    {/* <div className={classes.root}> */}
-                    <Grid item xs={6}>
-                        <Link to="/login">
-                            <Fab variant="extended">
-                                <NavigationIcon
-                                    className={classes.extendedIcon}
-                                />
-                                ログイン
-                            </Fab>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={6}>
+    // if (!userInfo) {
+    return (
+        <>
+            {/* <div className={classes.root}> */}
+            <Grid
+                container
+                alignItems="center"
+                justifyContent="center"
+                direction="column"
+                spacing={6}
+            >
+                <Grid item xs={6}>
+                    <Link to="/register">
                         <Fab variant="extended">
                             <NavigationIcon className={classes.extendedIcon} />
-                            <a href="/login/line/redirect" underline="none">
-                                LINEログイン
-                            </a>
+                            新規登録
                         </Fab>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Fab variant="extended">
-                            <NavigationIcon className={classes.extendedIcon} />
-                            <a href="/api/login/google" underline="none">
-                                Googleログイン
-                            </a>
-                        </Fab>
-                    </Grid>
+                    </Link>
                 </Grid>
-
                 {/* </div> */}
-            </>
-        );
-    } else {
-        if (userRole == 1) {
-            return (
-                <>
-                    {/* <div className={classes.root}>
-                     */}
-                    <Grid
-                        container
-                        alignItems="center"
-                        justifyContent="center"
-                        direction="column"
-                        spacing={6}
-                    >
-                        <Grid item xs={6}>
-                            <Link to="/admin">
-                                <Fab variant="extended">
-                                    <NavigationIcon
-                                        className={classes.extendedIcon}
-                                    />
-                                    管理画面
-                                </Fab>
-                            </Link>
-                            {/* </div> */}
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div onClick={logoutSubmit}>
-                                <Fab variant="extended">
-                                    <NavigationIcon
-                                        className={classes.extendedIcon}
-                                    />
-                                    ログアウト
-                                </Fab>
-                            </div>
-                        </Grid>
-                    </Grid>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    {/* <div className={classes.root}> */}
-                    <Grid
-                        container
-                        alignItems="center"
-                        justifyContent="center"
-                        direction="column"
-                        spacing={6}
-                    >
-                        <Grid item xs={6}>
-                            <Link to="/menus">
-                                <Fab variant="extended">
-                                    <NavigationIcon
-                                        className={classes.extendedIcon}
-                                    />
-                                    メニュー注文
-                                </Fab>
-                            </Link>
-                            {/* </div> */}
-                        </Grid>
-                        <Grid item xs={6}>
-                            {/* <div className={classes.root}> */}
-                            <Link to="/order_history">
-                                <Fab variant="extended">
-                                    <NavigationIcon
-                                        className={classes.extendedIcon}
-                                    />
-                                    チップ
-                                </Fab>
-                            </Link>
-                            {/* </div> */}
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div onClick={logoutSubmit}>
-                                <Fab variant="extended">
-                                    <NavigationIcon
-                                        className={classes.extendedIcon}
-                                    />
-                                    ログアウト
-                                </Fab>
-                            </div>
-                        </Grid>
-                    </Grid>
-                </>
-            );
-        }
-    }
+                {/* <div className={classes.root}> */}
+                <Grid item xs={6}>
+                    <Link to="/login">
+                        <Fab variant="extended">
+                            <NavigationIcon className={classes.extendedIcon} />
+                            ログイン
+                        </Fab>
+                    </Link>
+                </Grid>
+                <Grid item xs={6}>
+                    <Fab variant="extended">
+                        <NavigationIcon className={classes.extendedIcon} />
+                        <a href="/login/line/redirect" underline="none">
+                            LINEログイン
+                        </a>
+                    </Fab>
+                </Grid>
+                <Grid item xs={6}>
+                    <Fab variant="extended">
+                        <NavigationIcon className={classes.extendedIcon} />
+                        <a href="/login/google" underline="none">
+                            Googleログイン
+                        </a>
+                    </Fab>
+                </Grid>
+            </Grid>
+
+            {/* </div> */}
+        </>
+    );
+    //     } else {
+    //         if (userRole == 1) {
+    //             return (
+    //                 <>
+    //                     {/* <div className={classes.root}>
+    //                      */}
+    //                     <Grid
+    //                         container
+    //                         alignItems="center"
+    //                         justifyContent="center"
+    //                         direction="column"
+    //                         spacing={6}
+    //                     >
+    //                         <Grid item xs={6}>
+    //                             <Link to="/admin">
+    //                                 <Fab variant="extended">
+    //                                     <NavigationIcon
+    //                                         className={classes.extendedIcon}
+    //                                     />
+    //                                     管理画面
+    //                                 </Fab>
+    //                             </Link>
+    //                             {/* </div> */}
+    //                         </Grid>
+    //                         <Grid item xs={6}>
+    //                             <div onClick={logoutSubmit}>
+    //                                 <Fab variant="extended">
+    //                                     <NavigationIcon
+    //                                         className={classes.extendedIcon}
+    //                                     />
+    //                                     ログアウト
+    //                                 </Fab>
+    //                             </div>
+    //                         </Grid>
+    //                     </Grid>
+    //                 </>
+    //             );
+    //         } else {
+    //             return (
+    //                 <>
+    //                     {/* <div className={classes.root}> */}
+    //                     <Grid
+    //                         container
+    //                         alignItems="center"
+    //                         justifyContent="center"
+    //                         direction="column"
+    //                         spacing={6}
+    //                     >
+    //                         <Grid item xs={6}>
+    //                             <Link to="/menus">
+    //                                 <Fab variant="extended">
+    //                                     <NavigationIcon
+    //                                         className={classes.extendedIcon}
+    //                                     />
+    //                                     メニュー注文
+    //                                 </Fab>
+    //                             </Link>
+    //                             {/* </div> */}
+    //                         </Grid>
+    //                         <Grid item xs={6}>
+    //                             {/* <div className={classes.root}> */}
+    //                             <Link to="/order_history">
+    //                                 <Fab variant="extended">
+    //                                     <NavigationIcon
+    //                                         className={classes.extendedIcon}
+    //                                     />
+    //                                     チップ
+    //                                 </Fab>
+    //                             </Link>
+    //                             {/* </div> */}
+    //                         </Grid>
+    //                         <Grid item xs={6}>
+    //                             <div onClick={logoutSubmit}>
+    //                                 <Fab variant="extended">
+    //                                     <NavigationIcon
+    //                                         className={classes.extendedIcon}
+    //                                     />
+    //                                     ログアウト
+    //                                 </Fab>
+    //                             </div>
+    //                         </Grid>
+    //                     </Grid>
+    //                 </>
+    //             );
+    //         }
+    //     }
 }
