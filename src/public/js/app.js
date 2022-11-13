@@ -25524,7 +25524,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchLineMenus = function fetchLineMenus(params) {
   // console.log(params);
   var menu_id = params.menuId;
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:80/api/menu/".concat(menu_id)).then(function (res) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/menu/".concat(menu_id)).then(function (res) {
     return res.data;
   })["catch"](function (e) {
     console.error(e);
@@ -25609,7 +25609,7 @@ var postOrder = function postOrder(params) {
   var table_num = params.tableNumber;
   console.log(menu_id);
   console.log(menu_num);
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:80/api/order/".concat(menu_id), {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/order/".concat(menu_id), {
     menu_num: menu_num,
     table_num: table_num
   }).then(function (res) {
@@ -25620,7 +25620,7 @@ var postOrder = function postOrder(params) {
   });
 };
 var fetchOrderHistory = function fetchOrderHistory() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:80/api/order/user_order").then(function (res) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/order/user_order").then(function (res) {
     console.log("res", res);
     return res.data;
   })["catch"](function (e) {
@@ -25628,7 +25628,7 @@ var fetchOrderHistory = function fetchOrderHistory() {
   });
 };
 var fetchOrderIndex = function fetchOrderIndex() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:80/api/admin/orderindex").then(function (res) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/admin/orderindex").then(function (res) {
     console.log("res", res);
     return res.data;
   })["catch"](function (e) {
@@ -25637,7 +25637,7 @@ var fetchOrderIndex = function fetchOrderIndex() {
 };
 var serveOrder = function serveOrder(order_id) {
   console.log(order_id);
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:80/api/admin/serve/".concat(order_id)).then(function (res) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/admin/serve/".concat(order_id)).then(function (res) {
     console.log("res", res);
     return res.data;
   })["catch"](function (e) {
@@ -26021,153 +26021,153 @@ function GlobalNav() {
     });
   }, []);
   console.log(localStorage); // if (!localStorage.getItem("auth_token")) {
-  // if (!userInfo) {
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      container: true,
-      alignItems: "center",
-      justifyContent: "center",
-      direction: "column",
-      spacing: 6,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        item: true,
-        xs: 6,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
-          to: "/register",
+  if (!userInfo) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        container: true,
+        alignItems: "center",
+        justifyContent: "center",
+        direction: "column",
+        spacing: 6,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          item: true,
+          xs: 6,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+            to: "/register",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              variant: "extended",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                className: classes.extendedIcon
+              }), "\u65B0\u898F\u767B\u9332"]
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          item: true,
+          xs: 6,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+            to: "/login",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              variant: "extended",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                className: classes.extendedIcon
+              }), "\u30ED\u30B0\u30A4\u30F3"]
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          item: true,
+          xs: 6,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
             variant: "extended",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
               className: classes.extendedIcon
-            }), "\u65B0\u898F\u767B\u9332"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+              href: "/login/line/redirect",
+              underline: "none",
+              children: "LINE\u30ED\u30B0\u30A4\u30F3"
+            })]
           })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        item: true,
-        xs: 6,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
-          to: "/login",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          item: true,
+          xs: 6,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
             variant: "extended",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
               className: classes.extendedIcon
-            }), "\u30ED\u30B0\u30A4\u30F3"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+              href: "/login/google",
+              underline: "none",
+              children: "Google\u30ED\u30B0\u30A4\u30F3"
+            })]
           })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        item: true,
-        xs: 6,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          variant: "extended",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            className: classes.extendedIcon
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-            href: "/login/line/redirect",
-            underline: "none",
-            children: "LINE\u30ED\u30B0\u30A4\u30F3"
+        })]
+      })
+    });
+  } else {
+    if (userRole == 1) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          container: true,
+          alignItems: "center",
+          justifyContent: "center",
+          direction: "column",
+          spacing: 6,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: true,
+            xs: 6,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+              to: "/admin",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "extended",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  className: classes.extendedIcon
+                }), "\u7BA1\u7406\u753B\u9762"]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: true,
+            xs: 6,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              onClick: logoutSubmit,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "extended",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  className: classes.extendedIcon
+                }), "\u30ED\u30B0\u30A2\u30A6\u30C8"]
+              })
+            })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        item: true,
-        xs: 6,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          variant: "extended",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            className: classes.extendedIcon
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-            href: "/login/google",
-            underline: "none",
-            children: "Google\u30ED\u30B0\u30A4\u30F3"
+      });
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          container: true,
+          alignItems: "center",
+          justifyContent: "center",
+          direction: "column",
+          spacing: 6,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: true,
+            xs: 6,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+              to: "/menus",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "extended",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  className: classes.extendedIcon
+                }), "\u30E1\u30CB\u30E5\u30FC\u6CE8\u6587"]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: true,
+            xs: 6,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+              to: "/order_history",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "extended",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  className: classes.extendedIcon
+                }), "\u30C1\u30C3\u30D7"]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: true,
+            xs: 6,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              onClick: logoutSubmit,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "extended",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  className: classes.extendedIcon
+                }), "\u30ED\u30B0\u30A2\u30A6\u30C8"]
+              })
+            })
           })]
         })
-      })]
-    })
-  }); //     } else {
-  //         if (userRole == 1) {
-  //             return (
-  //                 <>
-  //                     {/* <div className={classes.root}>
-  //                      */}
-  //                     <Grid
-  //                         container
-  //                         alignItems="center"
-  //                         justifyContent="center"
-  //                         direction="column"
-  //                         spacing={6}
-  //                     >
-  //                         <Grid item xs={6}>
-  //                             <Link to="/admin">
-  //                                 <Fab variant="extended">
-  //                                     <NavigationIcon
-  //                                         className={classes.extendedIcon}
-  //                                     />
-  //                                     管理画面
-  //                                 </Fab>
-  //                             </Link>
-  //                             {/* </div> */}
-  //                         </Grid>
-  //                         <Grid item xs={6}>
-  //                             <div onClick={logoutSubmit}>
-  //                                 <Fab variant="extended">
-  //                                     <NavigationIcon
-  //                                         className={classes.extendedIcon}
-  //                                     />
-  //                                     ログアウト
-  //                                 </Fab>
-  //                             </div>
-  //                         </Grid>
-  //                     </Grid>
-  //                 </>
-  //             );
-  //         } else {
-  //             return (
-  //                 <>
-  //                     {/* <div className={classes.root}> */}
-  //                     <Grid
-  //                         container
-  //                         alignItems="center"
-  //                         justifyContent="center"
-  //                         direction="column"
-  //                         spacing={6}
-  //                     >
-  //                         <Grid item xs={6}>
-  //                             <Link to="/menus">
-  //                                 <Fab variant="extended">
-  //                                     <NavigationIcon
-  //                                         className={classes.extendedIcon}
-  //                                     />
-  //                                     メニュー注文
-  //                                 </Fab>
-  //                             </Link>
-  //                             {/* </div> */}
-  //                         </Grid>
-  //                         <Grid item xs={6}>
-  //                             {/* <div className={classes.root}> */}
-  //                             <Link to="/order_history">
-  //                                 <Fab variant="extended">
-  //                                     <NavigationIcon
-  //                                         className={classes.extendedIcon}
-  //                                     />
-  //                                     チップ
-  //                                 </Fab>
-  //                             </Link>
-  //                             {/* </div> */}
-  //                         </Grid>
-  //                         <Grid item xs={6}>
-  //                             <div onClick={logoutSubmit}>
-  //                                 <Fab variant="extended">
-  //                                     <NavigationIcon
-  //                                         className={classes.extendedIcon}
-  //                                     />
-  //                                     ログアウト
-  //                                 </Fab>
-  //                             </div>
-  //                         </Grid>
-  //                     </Grid>
-  //                 </>
-  //             );
-  //         }
-  //     }
+      });
+    }
+  }
 }
 
 /***/ }),
