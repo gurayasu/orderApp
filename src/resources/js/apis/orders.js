@@ -9,7 +9,7 @@ export const postOrder = (params) => {
     console.log(menu_num);
 
     return axios
-        .post(`http://localhost:80/api/order/${menu_id}`, {
+        .post(`/api/order/${menu_id}`, {
             menu_num: menu_num,
             table_num: table_num,
         })
@@ -22,7 +22,7 @@ export const postOrder = (params) => {
 
 export const fetchOrderHistory = () => {
     return axios
-        .get("http://localhost:80/api/order/user_order")
+        .get("/api/order/user_order")
         .then((res) => {
             console.log("res", res);
             return res.data;
@@ -32,7 +32,7 @@ export const fetchOrderHistory = () => {
 
 export const fetchOrderIndex = () => {
     return axios
-        .get("http://localhost:80/api/admin/orderindex")
+        .get("/api/admin/orderindex")
         .then((res) => {
             console.log("res", res);
             return res.data;
@@ -44,7 +44,7 @@ export const serveOrder = (order_id) => {
     console.log(order_id);
 
     return axios
-        .post(`http://localhost:80/api/admin/serve/${order_id}`)
+        .post(`/api/admin/serve/${order_id}`)
         .then((res) => {
             console.log("res", res);
             return res.data;

@@ -3,11 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\API\ApiAccountController;
 use App\Http\Controllers\API\ApiMenuController;
 use App\Http\Controllers\API\ApiOrderController;
 use App\Http\Controllers\API\ApiAdmiController;
-use App\Http\Controllers\SocialLoginController;
 use App\Models\Menu;
 
 /*
@@ -24,10 +24,6 @@ use App\Models\Menu;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-//LINE以外のSocialログイン
-Route::get('login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
-Route::get('login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);

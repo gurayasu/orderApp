@@ -102,7 +102,7 @@ export default function GlobalNav() {
                     <Grid item xs={6}>
                         <Fab variant="extended">
                             <NavigationIcon className={classes.extendedIcon} />
-                            <a href="/api/login/google" underline="none">
+                            <a href="/login/google" underline="none">
                                 Googleログイン
                             </a>
                         </Fab>
