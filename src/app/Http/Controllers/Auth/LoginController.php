@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
@@ -56,6 +57,8 @@ class LoginController extends Controller
     public function handleProviderCallback(Request $request) {
         $line_user = Socialite::driver('line')->user();
 
+        Log::debug($line_user);
+
         $user = User::firstOrCreate(
             ['line_id' => $line_user->id],
             ['name' => $line_user->name]
@@ -63,6 +66,8 @@ class LoginController extends Controller
 
         $this->guard()->login($user, true);
         Auth::login($user, true);
-        return $this->sendLoginResponse($request);
+        return redirect('/home');
+
+        // return $this->sendLoginResponse($request);
     }
 }

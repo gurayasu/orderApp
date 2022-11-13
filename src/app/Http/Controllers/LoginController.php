@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -47,6 +49,7 @@ class LoginController extends Controller
     );
     $token = $userCreated->createToken('token-name')->plainTextToken;
     Auth::login($userCreated, true);
+    return redirect('/');
     return response()->json($userCreated, 200, ['Access-Token' => $token]);
     
     }

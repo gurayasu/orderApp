@@ -36,3 +36,6 @@ Route::get('/auth/google/redirect', function () {
   Route::controller(OAuthController::class)->group(function() {
     Route::get('/auth/google/callback', 'googleAuthCallback');
   });
+
+Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
+Route::get('/callback', 'LineLoginController@callback')->name('callback');
