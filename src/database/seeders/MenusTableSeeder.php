@@ -98,6 +98,13 @@ class MenusTableSeeder extends Seeder
             'alcohol'=>0,
             'pictureId'=>'1QG59_O64ReNxGV9YHKeK8sGoH1kd2dgn'
             ],
+            [
+            'menu_name' => 'ホットサンド',
+            'menu_price' => 400,
+            'description'=>'1993年に仕様が公開され、現在も改良が続けられている。ノンアルカシスオレンジ。',
+            'alcohol'=>3,
+            'pictureId'=>'1QG59_O64ReNxGV9YHKeK8sGoH1kd2dgn'
+            ],
         ]);
     }
 }

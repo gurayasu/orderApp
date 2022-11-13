@@ -92,12 +92,18 @@ function Register() {
                                     </span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <button
+                                    {/* <button
                                         type="submit"
                                         className="btn btn-primary"
                                     >
                                         Register
-                                    </button>
+                                    </button> */}
+                                    <input
+                                        type="button"
+                                        className="btn btn-primary"
+                                        value="Register"
+                                        onClick={registerSubmit}
+                                    ></input>
                                 </div>
                             </form>
                         </div>

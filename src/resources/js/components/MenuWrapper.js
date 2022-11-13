@@ -6,6 +6,7 @@ import { SubText } from "./StyledText";
 
 // constants
 import { COLORS } from "../style_constants";
+import { menusReducer } from "../reducers/menus";
 
 const Wrapper = styled.div`
     display: flex;
@@ -38,13 +39,23 @@ const MenuImageNode = styled.img`
 
 export const MenuWrapper = ({ menu, onClickMenuWrapper, imageUrl }) => (
     <Wrapper onClick={() => onClickMenuWrapper(menu)}>
-        <MenuDetail>
-            {menu.menu_name}
-            <DescriptionWrapper>
-                <SubText>{menu.description}</SubText>
-            </DescriptionWrapper>
-            {/* <PriceWrapper>¥{menu.menu_price}</PriceWrapper> */}
-        </MenuDetail>
+        {menu.alcohol == 3 ? (
+            <MenuDetail>
+                {menu.menu_name}
+                <DescriptionWrapper>
+                    <SubText>{menu.description}</SubText>
+                </DescriptionWrapper>
+                <PriceWrapper>¥{menu.menu_price}</PriceWrapper>
+            </MenuDetail>
+        ) : (
+            <MenuDetail>
+                {menu.menu_name}
+                <DescriptionWrapper>
+                    <SubText>{menu.description}</SubText>
+                </DescriptionWrapper>
+                {/* <PriceWrapper>¥{menu.menu_price}</PriceWrapper> */}
+            </MenuDetail>
+        )}
         <MenuImageNode src={imageUrl} />
     </Wrapper>
 );

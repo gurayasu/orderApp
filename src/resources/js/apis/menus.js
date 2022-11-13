@@ -12,7 +12,7 @@ export const fetchMenus = () => {
 
 export const fetchAlcoholMenus = () => {
     return axios
-        .get("http://localhost:80/api/menu/alcohol")
+        .get("/api/menu/alcohol")
         .then((res) => {
             return res.data;
         })
@@ -21,7 +21,16 @@ export const fetchAlcoholMenus = () => {
 
 export const fetchNonAlcoholMenus = () => {
     return axios
-        .get("http://localhost:80/api/menu/nonalcohol")
+        .get("/api/menu/nonalcohol")
+        .then((res) => {
+            return res.data;
+        })
+        .catch((e) => console.error(e));
+};
+
+export const fetchFoodMenus = () => {
+    return axios
+        .get("/api/menu/food")
         .then((res) => {
             return res.data;
         })

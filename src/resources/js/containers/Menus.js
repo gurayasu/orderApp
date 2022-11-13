@@ -20,6 +20,7 @@ import {
     fetchMenus,
     fetchAlcoholMenus,
     fetchNonAlcoholMenus,
+    fetchFoodMenus,
 } from "../apis/menus";
 import {
     initialState as menusInitialState,
@@ -143,6 +144,7 @@ export const Menus = ({ match }) => {
     const [state, setState] = useState(initialState);
     const [alcoholMenus, setAlcoholMenus] = useState("");
     const [nonAlcoholMenus, setNonAlcoholMenus] = useState("");
+    const [foodMenus, setFoodMenus] = useState("");
 
     useEffect(() => {
         dispatch({ type: menusActionTypes.FETCHING });
@@ -164,10 +166,14 @@ export const Menus = ({ match }) => {
         fetchNonAlcoholMenus().then((data) => {
             setNonAlcoholMenus(data);
         });
+
+        fetchFoodMenus().then((data) => {
+            setFoodMenus(data);
+        });
     }, []);
 
-    console.log("alcoholMenus", alcoholMenus);
-    console.log("nonAlcoholMenus", nonAlcoholMenus);
+    // console.log("alcoholMenus", alcoholMenus);
+    // console.log("nonAlcoholMenus", nonAlcoholMenus);
 
     const submitOrder = () => {
         fetchLineMenus({
@@ -208,6 +214,7 @@ export const Menus = ({ match }) => {
                 >
                     <Tab label="アルコール" {...a11yProps(0)} />
                     <Tab label="ノンアルコール" {...a11yProps(1)} />
+                    <Tab label="フード" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -317,7 +324,44 @@ export const Menus = ({ match }) => {
                                                 selectedMenu: menu,
                                             })
                                         }
-                                        imageUrl={FoodImage}
+                                        imageUrl={`https://drive.google.com/uc?id=${menu.pictureId}`}
+                                    />
+                                )}
+                            </ItemWrapper>
+                        ))
+                    )}
+                </MenusList>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <MenusList>
+                    {menusState.fetchState === REQUEST_STATE.LOADING ? (
+                        <Fragment>
+                            {[...Array(12).keys()].map((i) => (
+                                <ItemWrapper key={i}>
+                                    <Skeleton
+                                        key={i}
+                                        variant="rect"
+                                        width={450}
+                                        height={180}
+                                    />
+                                </ItemWrapper>
+                            ))}
+                        </Fragment>
+                    ) : (
+                        foodMenus &&
+                        foodMenus.map((menu) => (
+                            <ItemWrapper key={menu.id}>
+                                {menu.alcohol === 0 && (
+                                    <MenuWrapper
+                                        menu={menu}
+                                        onClickMenuWrapper={(menu) =>
+                                            setState({
+                                                ...state,
+                                                isOpenOrderDialog: true,
+                                                selectedMenu: menu,
+                                            })
+                                        }
+                                        imageUrl={`https://drive.google.com/uc?id=${menu.pictureId}`}
                                     />
                                 )}
                             </ItemWrapper>

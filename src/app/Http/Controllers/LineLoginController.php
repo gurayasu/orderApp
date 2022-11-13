@@ -90,6 +90,7 @@ class LineLoginController extends Controller
       // あったらログイン
       if($user) {
         Auth::login($user);
+        // return response()->json($user, 200);
         return redirect('/');
 
       // なければ登録してからログイン
@@ -101,6 +102,8 @@ class LineLoginController extends Controller
         $user->save();
         Auth::login($user);
         return redirect('/');
+        // return response()->json($user, 200);
+
       }
     }
 }
