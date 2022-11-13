@@ -26,8 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //LINE以外のSocialログイン
-Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
-Route::get('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
+Route::get('login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
+Route::get('login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
