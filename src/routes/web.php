@@ -14,28 +14,14 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-// Route::get('/{any}', function () {
-//     return view('index');
-// })->where('any', '.*');
-
-Route::get('/', function () {
+Route::get('/{any}', function () {
     return view('index');
-});
+})->where('any', '.*');
 
-// Auth::routes();
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // 以下、LINEログイン系のルーティング
 Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
 Route::get('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
 
-Route::get('/auth/google/redirect', function () {
-    return Socialite::driver('google')->redirect();
-  });
-  
-  Route::controller(OAuthController::class)->group(function() {
-    Route::get('/auth/google/callback', 'googleAuthCallback');
-  });
-
-Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
-Route::get('/callback', 'LineLoginController@callback')->name('callback');
+// Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
+// Route::get('/callback', 'LineLoginController@callback')->name('callback');

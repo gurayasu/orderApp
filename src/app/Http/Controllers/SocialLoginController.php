@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class SocialLoginController extends Controller
 {
+    use AuthenticatesUsers;
 
     public function redirectToProvider($providers)
     {
@@ -19,7 +21,7 @@ class LoginController extends Controller
         return Socialite::driver($providers)->stateless()->redirect();
     }
 
-    public function handleProviderCallback($providers)
+    public function handleProviderCallback(Request $request, $providers)
     {
         $validated = $this->validateProvider($providers);
         if (!is_null($validated)) {
@@ -50,7 +52,9 @@ class LoginController extends Controller
     $token = $userCreated->createToken('token-name')->plainTextToken;
     Auth::login($userCreated, true);
     // return redirect('/');
-    return response()->json($userCreated, 200, ['Access-Token' => $token]);
+    // return response()->json($userCreated, 200, ['Access-Token' => $token]);
+    return $this->sendLoginResponse($request);
+
     
     }
 

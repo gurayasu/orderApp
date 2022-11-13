@@ -80,13 +80,19 @@ function Login() {
                                     </span>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <button
+                                    {/* <button
                                         type="submit"
                                         className="btn btn-primary"
                                         ontouchend={loginSubmit}
                                     >
                                         Login
-                                    </button>
+                                    </button> */}
+                                    <input
+                                        type="button"
+                                        className="btn btn-primary"
+                                        value="Login"
+                                        onClick={loginSubmit}
+                                    ></input>
                                 </div>
                             </form>
                         </div>

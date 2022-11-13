@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -57,8 +57,6 @@ class LoginController extends Controller
     public function handleProviderCallback(Request $request) {
         $line_user = Socialite::driver('line')->user();
 
-        Log::debug($line_user);
-
         $user = User::firstOrCreate(
             ['line_id' => $line_user->id],
             ['name' => $line_user->name]
@@ -66,8 +64,7 @@ class LoginController extends Controller
 
         $this->guard()->login($user, true);
         Auth::login($user, true);
-        return redirect('/home');
-
-        // return $this->sendLoginResponse($request);
+        // return redirect('/');
+        return $this->sendLoginResponse($request);
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { UseMutationResult, useMutation } from "react-query";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
@@ -48,14 +49,9 @@ export default function GlobalNav() {
 
     const [userInfo, setUserInfo] = useState("");
     useEffect(() => {
-        axios.get(`/api/fetchuser`).then((res) => {
+        axios.get(`/api/loginuser`).then((res) => {
             console.log(res.data);
             setUserInfo(res.data);
-            //     if (res) {
-            //         console.log(res);
-            //         location.reload();
-            //     }
-            //
         });
     }, []);
 
@@ -100,6 +96,14 @@ export default function GlobalNav() {
                             <NavigationIcon className={classes.extendedIcon} />
                             <a href="/login/line/redirect" underline="none">
                                 LINEログイン
+                            </a>
+                        </Fab>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Fab variant="extended">
+                            <NavigationIcon className={classes.extendedIcon} />
+                            <a href="/api/login/google" underline="none">
+                                Googleログイン
                             </a>
                         </Fab>
                     </Grid>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Validator;
-
+use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function register(Request $request){
@@ -81,6 +81,12 @@ class AuthController extends Controller
         $user = auth()->user()->tokens()->get();
         $userInfo = User::where('id',$user[0]->tokenable_id
     )->get();
+        return response()->json($userInfo,200);
+    }
+
+    public function fetchUserSimple(){
+        $user_id=Auth::id();
+        $userInfo = User::where('id',$user_id)->get();
         return response()->json($userInfo,200);
     }
 }
