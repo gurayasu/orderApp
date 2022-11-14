@@ -14,15 +14,21 @@ class SocialLoginController extends Controller
 
     public function redirectToProvider($providers)
     {
-        $validated = $this->validateProvider($providers);
-        if (!is_null($validated)){
-            return $validated;
-        }
-        return Socialite::driver($providers)->stateless()->redirect();
+        // $validated = $this->validateProvider($providers);
+        // if (!is_null($validated)){
+        //     return $validated;
+        // }
+        // return Socialite::driver($providers)->stateless()->redirect();
+
+        $redirectUrl = Socialite::driver($providers)->redirect()->getTargetUrl();
+        return response()->json([
+            'redirect_url' => $redirectUrl,
+        ]);
     }
 
     public function handleProviderCallback(Request $request, $providers)
     {
+        
         $validated = $this->validateProvider($providers);
         if (!is_null($validated)) {
             return $validated;
@@ -51,9 +57,10 @@ class SocialLoginController extends Controller
     );
     $token = $userCreated->createToken('token-name')->plainTextToken;
     Auth::login($userCreated, true);
+    return $userCreated;
     // return redirect('/');
     // return response()->json($userCreated, 200, ['Access-Token' => $token]);
-    return $this->sendLoginResponse($request);
+    // return $this->sendLoginResponse($request);
 
     
     }

@@ -65,6 +65,7 @@ class LoginController extends Controller
         $this->guard()->login($user, true);
         Auth::login($user, true);
         // return redirect('/');
-        return $this->sendLoginResponse($request);
+        // return $this->sendLoginResponse($request);
+        // return redirect()->route('');
     }
 }

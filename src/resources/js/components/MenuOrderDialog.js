@@ -80,12 +80,12 @@ export const MenuOrderDialog = ({
 
     return (
         <Dialog open={isOpen} onClose={onClose}>
-            <OrderHeader
+            {/* <OrderHeader
                 src={
                     "https://drive.google.com/uc?id=1pmKFeHJAfNzo4giW7voDQS5jYXHkKS8q"
                 }
                 alt="order header"
-            />
+            /> */}
             <DialogTitle>{menu.menu_name}</DialogTitle>
             <DialogContent>
                 <DescriptionWrapper>
@@ -93,14 +93,19 @@ export const MenuOrderDialog = ({
                 </DescriptionWrapper>
             </DialogContent>
             <DialogActions>
-                <Typography variant="h6" component="h6">
+                {/* <Typography variant="h6" component="h6">
                     テーブル番号選択
-                </Typography>
+                </Typography> */}
                 <FormControl
                     className={classes.formControl}
                     margin-bottom="15px"
                 >
-                    <InputLabel>テーブル番号</InputLabel>
+                    <Typography variant="h12" component="h12">
+                        テーブル番号選択
+                    </Typography>
+                    {/* <InputLabel variant="h6" component="h6">
+                        テーブル番号
+                    </InputLabel> */}
                     <Select
                         onChange={(e) => {
                             onChangeSearch(e);
@@ -112,6 +117,8 @@ export const MenuOrderDialog = ({
                         <MenuItem value={3}>3</MenuItem>
                         <MenuItem value={4}>4</MenuItem>
                         <MenuItem value={5}>5</MenuItem>
+                        <MenuItem value={5}>6</MenuItem>
+                        <MenuItem value={5}>7</MenuItem>
                     </Select>
                 </FormControl>
             </DialogActions>

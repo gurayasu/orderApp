@@ -8,6 +8,7 @@ use App\Http\Controllers\API\ApiAccountController;
 use App\Http\Controllers\API\ApiMenuController;
 use App\Http\Controllers\API\ApiOrderController;
 use App\Http\Controllers\API\ApiAdmiController;
+use App\Http\Controllers\SocialLoginController;
 use App\Models\Menu;
 
 /*
@@ -21,6 +22,19 @@ use App\Models\Menu;
 |
 */
 
+Route::group(['middleware' => 'web'], function () {
+// 以下、LINEログイン系のルーティング
+Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
+Route::post('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
+
+//LINE以外のSocialログイン
+Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
+Route::post('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
+Route::get('/login/google', [SocialLoginController::class, 'redirectToProvider']);
+Route::post('/login/google/callback', [SocialLoginController::class, 'handleProviderCallback']);
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -28,7 +42,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function() {
+// Route::middleware('auth:sanctum')->group(function() {
 Route::group(['middleware' => 'api'], function () {
 
 Route::get('/test', static function () {
@@ -73,6 +87,6 @@ Route::post('/admin/serve/{order_id}',[ApiAdmiController::class,'serveOrder']);
 
 });
 
-});
+// });
 
 
