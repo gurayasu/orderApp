@@ -16,9 +16,16 @@ use App\Http\Controllers\SocialLoginController;
 |
 */
 
-Route::get('/', function () {
-  return view('index');
-});
+// apiプレフィックスは除外
+Route::get('/{any?}', fn() => view('index'))->where('any', '(?!api).+');
+
+// Route::get('/', function () {
+//   return view('index');
+// });
+
+// Route::get('/home', function () {
+//   return view('index');
+// });
 
 // Route::get('/{any}', function () {
 //     return view('index');
@@ -27,10 +34,10 @@ Route::get('/', function () {
 // Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
 // Route::get('/callback', 'LineLoginController@callback')->name('callback');
 
-// 以下、LINEログイン系のルーティング
-Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
-Route::get('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
+// // 以下、LINEログイン系のルーティング
+// Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
+// Route::get('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
 
-//LINE以外のSocialログイン
-Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
-Route::get('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
+// //LINE以外のSocialログイン
+// Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
+// Route::get('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);

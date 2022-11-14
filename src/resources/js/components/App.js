@@ -19,7 +19,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import NavigationIcon from "@material-ui/icons/Navigation";
 
-axios.defaults.baseURL = "http://localhost:80/";
+axios.defaults.baseURL = "https://hackbar-tottori.gacci.jp";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.defaults.withCredentials = true;
