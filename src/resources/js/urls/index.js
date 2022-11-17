@@ -1,4 +1,5 @@
-const DEFAULT_API_LOCALHOST = "https://hackbar-tottori.gacci.jp/api";
+const baseUrl = process.env.APP_URL;
+const DEFAULT_API_LOCALHOST = `${baseUrl}/api`;
 
 //[Menu]
 export const menusIndex = `${DEFAULT_API_LOCALHOST}/menu/index`;
