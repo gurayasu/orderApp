@@ -120,12 +120,13 @@ export const Menus = ({ match }) => {
     const history = useHistory();
     const [menusState, dispatch] = useReducer(menusReducer, menusInitialState);
 
-    const [tableNumber, setTableNumber] = React.useState(1);
-    const onChangeSearch = useCallback((e) => {
-        if (e.target.value !== undefined && e.target.value !== null) {
-            setTableNumber(e.target.value);
-        }
-    }, []);
+    // const [tableNumber, setTableNumber] = React.useState(1);
+    // const onChangeSearch = useCallback((e) => {
+    //     if (e.target.value !== undefined && e.target.value !== null) {
+    //         setTableNumber(e.target.value);
+    //     }
+    // }, []);
+    const tableNumber = Math.floor(Math.random() * 20);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -280,7 +281,7 @@ export const Menus = ({ match }) => {
                                 selectedMenuCount: 1,
                             })
                         }
-                        onChangeSearch={onChangeSearch}
+                        // onChangeSearch={onChangeSearch}
                     />
                 )}
                 {state.isOpenNewOrderDialog && (
@@ -398,7 +399,7 @@ export const Menus = ({ match }) => {
                             selectedMenuCount: 1,
                         })
                     }
-                    onChangeSearch={onChangeSearch}
+                    // onChangeSearch={onChangeSearch}
                 />
             )}
             {state.isOpenNewOrderDialog && (
