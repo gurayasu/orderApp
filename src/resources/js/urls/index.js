@@ -1,4 +1,4 @@
-const DEFAULT_API_LOCALHOST = "http://localhost:80/api";
+const DEFAULT_API_LOCALHOST = "https://hackbar-tottori.gacci.jp/api";
 
 //[Menu]
 export const menusIndex = `${DEFAULT_API_LOCALHOST}/menu/index`;
