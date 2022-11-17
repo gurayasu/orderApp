@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useReducer } from "react";
+import React, { Fragment, useEffect, useReducer, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { fetchLineMenus } from "../apis/line_menus";
 import {
@@ -7,29 +7,16 @@ import {
     lineMenusReducer,
 } from "../reducers/lineMenus";
 import { postOrder } from "../apis/orders";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
 // components
 import { OrderDetailItem } from "../components/OrderDetailItem";
 import { OrderButton } from "../components/Buttons/OrderButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { OrderFinishDialog } from "../components/OrderFinishDialog";
 
-// images
-import MainLogo from "../images/logo.png";
+import styled from "styled-components";
 
 // constants
 import { REQUEST_STATE } from "../constants";
-
-const HeaderWrapper = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    padding: 8px 32px;
-`;
-
-const MainLogoImage = styled.img`
-    height: 90px;
-`;
 
 const OrderListWrapper = styled.div`
     display: flex;
@@ -45,8 +32,21 @@ export const Orders = () => {
     const history = useHistory();
     const menu_id = location.state.menu_id;
     const menu_count = location.state.menu_count;
+    const order_id = location.state.id;
     const tableNumber = location.state.tableNumber;
+    // const tableNumber = Math.floor(Math.random() * 20);
     const [state, dispatch] = useReducer(lineMenusReducer, initialState);
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
         dispatch({ type: lineMenusActionTyps.FETCHING });
         fetchLineMenus({
@@ -59,6 +59,7 @@ export const Orders = () => {
                         lineMenusSummary: data,
                     },
                 });
+                console.log("res", data);
             })
             .catch((e) => console.error(e));
     }, []);
@@ -69,9 +70,10 @@ export const Orders = () => {
             menu_id: state.lineMenusSummary.id,
             menu_count: menu_count,
             tableNumber: tableNumber,
-        }).then(() => {
+        }).then((res) => {
             dispatch({ type: lineMenusActionTyps.POST_SUCCESS });
-            // window.location.reload();
+            console.log("res", res);
+            handleClickOpen();
         });
     };
 
@@ -121,12 +123,12 @@ export const Orders = () => {
                             state.lineMenusSummary && (
                                 <>
                                     <OrderButton
-                                        onClick={() => postLineMenus()}
                                         disabled={
                                             state.postState ===
                                                 REQUEST_STATE.LOADING ||
                                             state.postState === REQUEST_STATE.OK
                                         }
+                                        onClick={() => postLineMenus()}
                                     >
                                         {orderButtonLabel()}
                                     </OrderButton>
@@ -147,6 +149,13 @@ export const Orders = () => {
                             !state.lineMenusSummary && (
                                 <p>注文予定の商品はありません。</p>
                             )}
+                        {open && (
+                            <OrderFinishDialog
+                                open={open}
+                                onClose={handleClose}
+                                order_id={order_id}
+                            />
+                        )}
                     </div>
                 </div>
             </OrderListWrapper>

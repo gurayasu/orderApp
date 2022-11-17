@@ -26,7 +26,7 @@ export const OrderDetailItem = ({
 }) => (
     <Fragment>
         <LineWrapper>
-            <p>テーブル番号</p>
+            <p>注文番号</p>
             <p>{tableNumber}</p>
         </LineWrapper>
         <LineWrapper>

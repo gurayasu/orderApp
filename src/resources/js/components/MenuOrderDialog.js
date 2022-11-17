@@ -74,7 +74,7 @@ export const MenuOrderDialog = ({
     onClickCountUp,
     onClickCountDown,
     onClickOrder,
-    onChangeSearch,
+    // onChangeSearch,
 }) => {
     const classes = useStyles();
 
@@ -92,10 +92,7 @@ export const MenuOrderDialog = ({
                     <SubText>{menu.description}</SubText>
                 </DescriptionWrapper>
             </DialogContent>
-            <DialogActions>
-                {/* <Typography variant="h6" component="h6">
-                    テーブル番号選択
-                </Typography> */}
+            {/* <DialogActions>
                 <FormControl
                     className={classes.formControl}
                     margin-bottom="15px"
@@ -103,9 +100,6 @@ export const MenuOrderDialog = ({
                     <Typography variant="h12" component="h12">
                         テーブル番号選択
                     </Typography>
-                    {/* <InputLabel variant="h6" component="h6">
-                        テーブル番号
-                    </InputLabel> */}
                     <Select
                         onChange={(e) => {
                             onChangeSearch(e);
@@ -121,7 +115,7 @@ export const MenuOrderDialog = ({
                         <MenuItem value={5}>7</MenuItem>
                     </Select>
                 </FormControl>
-            </DialogActions>
+            </DialogActions> */}
             <DialogActions>
                 <CountersWrapper>
                     <CountItem>
