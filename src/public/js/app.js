@@ -25373,6 +25373,7 @@ __webpack_require__.r(__webpack_exports__);
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.baseURL) = process.env.APP_URL;
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post["Content-Type"]) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post.Accept) = "application/json";
+(axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post["Access-Control-Allow-Origin"]) = "*";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.withCredentials) = true;
 axios__WEBPACK_IMPORTED_MODULE_11___default().interceptors.request.use(function (config) {
   var token = localStorage.getItem("auth_token");
