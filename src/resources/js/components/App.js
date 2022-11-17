@@ -12,14 +12,8 @@ import { AdminTable } from "../containers/AdminTable";
 import Register from "./Register";
 import Login from "./Login";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import NavigationIcon from "@material-ui/icons/Navigation";
 
-axios.defaults.baseURL = "http://localhost";
+axios.defaults.baseURL = "https://hackbar-tottori.gacci.jp";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.defaults.withCredentials = true;
