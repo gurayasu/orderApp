@@ -9,4 +9,6 @@ Hack.BAR鳥取でのメニュー注文システム
 ### 実装済みだが使ってない機能
 メールでの認証機能（Laravel Sanctum）
 ### 実装したかったけどできなかった機能
-SNSを使った認証機能（Larave socialiteがベース）. SPAの環境でうまく実装できなかった
+SNSを使った認証機能（Larave socialiteがベース）
+
+SPAの環境でうまく実装できなかった
