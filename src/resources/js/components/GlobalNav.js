@@ -44,12 +44,12 @@ export default function GlobalNav() {
         });
     };
 
-    const fetchUser = () => {
-        axios.get(`/api/fetchuser`).then((res) => {
-            setUserRole(res.data[0].role);
-            return res;
-        });
-    };
+    // const fetchUser = () => {
+    //     axios.get(`/api/fetchuser`).then((res) => {
+    //         setUserRole(res.data[0].role);
+    //         return res;
+    //     });
+    // };
     const history = useHistory();
     const logoutSubmit = (e) => {
         e.preventDefault();
@@ -67,15 +67,15 @@ export default function GlobalNav() {
 
     const classes = useStyles();
 
-    const [userInfo, setUserInfo] = useState("");
-    useEffect(() => {
-        axios.get(`/api/loginuser`).then((res) => {
-            console.log(res.data);
-            setUserInfo(res.data);
-        });
-    }, [useOAuthUrl]);
+    // const [userInfo, setUserInfo] = useState("");
+    // useEffect(() => {
+    //     axios.get(`/api/loginuser`).then((res) => {
+    //         console.log(res.data);
+    //         setUserInfo(res.data);
+    //     });
+    // }, [useOAuthUrl]);
 
-    console.log(localStorage);
+    // console.log(localStorage);
 
     // if (!localStorage.getItem("auth_token")) {
     // if (!userInfo) {

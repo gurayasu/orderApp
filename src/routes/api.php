@@ -23,34 +23,16 @@ use App\Models\Menu;
 */
 
 Route::group(['middleware' => 'web'], function () {
-// 以下、LINEログイン系のルーティング
-Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
-Route::post('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
+// // 以下、LINEログイン系のルーティング
+// Route::get('/login/line/redirect', [LoginController::class, 'redirectToProvider'])->name('line.redirect');
+// Route::post('/login/line/callback', [LoginController::class, 'handleProviderCallback'])->name('line.callback');
 
-//LINE以外のSocialログイン
-Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
-Route::post('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
-Route::get('/login/google', [SocialLoginController::class, 'redirectToProvider']);
-Route::post('/login/google/callback', [SocialLoginController::class, 'handleProviderCallback']);
-});
+// //LINE以外のSocialログイン
+// Route::get('/login/{providers}', [SocialLoginController::class, 'redirectToProvider']);
+// Route::post('/login/{providers}/callback', [SocialLoginController::class, 'handleProviderCallback']);
+// Route::get('/login/google', [SocialLoginController::class, 'redirectToProvider']);
+// Route::post('/login/google/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
-// Route::middleware('auth:sanctum')->group(function() {
-Route::group(['middleware' => 'api'], function () {
-
-Route::get('/test', static function () {
-    $status = ['status' => 200, 'message' => 'success'];
-    return compact('status');
-});
-
-//[Menu]一覧を表示
 Route::get('/menu/index',[ApiMenuController::class,'indexMenu']);
 //[Menu]アルコールメニュー一覧を表示
 Route::get('/menu/alcohol',[ApiMenuController::class,'alcoholMenu']);
@@ -86,6 +68,59 @@ Route::get('/admin/orderindex',[ApiAdmiController::class,'orderIndex']);
 Route::post('/admin/serve/{order_id}',[ApiAdmiController::class,'serveOrder']);
 
 });
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::post('register', [AuthController::class, 'register']);
+// Route::post('login', [AuthController::class, 'login']);
+
+// // Route::middleware('auth:sanctum')->group(function() {
+// Route::group(['middleware' => 'api'], function () {
+
+// Route::get('/test', static function () {
+//     $status = ['status' => 200, 'message' => 'success'];
+//     return compact('status');
+// });
+
+// //[Menu]一覧を表示
+// Route::get('/menu/index',[ApiMenuController::class,'indexMenu']);
+// //[Menu]アルコールメニュー一覧を表示
+// Route::get('/menu/alcohol',[ApiMenuController::class,'alcoholMenu']);
+// //[Menu]ノンアルコールメニュー一覧を表示
+// Route::get('/menu/nonalcohol',[ApiMenuController::class,'nonAlcoholMenu']);
+// //[Menu]フードメニュー一覧を表示
+// Route::get('/menu/food',[ApiMenuController::class,'foodMenu']);
+
+// //[Menu]特定idのメニューを表示
+// Route::get('/menu/{menu_id}',[ApiMenuController::class,'selectMenu']);
+
+// //[Order]order作成
+// Route::post('/order/{menu_id}',[ApiOrderController::class,'createOrder']);
+// //[Order]userごとのorders表示
+// Route::get('/order/user_order',[ApiOrderController::class,'userOrder']);
+
+// //[Account]accountのpaid_flag更新(会計支払い)
+// Route::post('/account/pay',[ApiAccountController::class,'payAccount']);
+
+// //[User]ログアウト
+// Route::post('/logout', [AuthController::class, 'logout']);
+
+// //[User]ユーザーデータ取得
+// Route::get('/fetchuser', [AuthController::class, 'fetchUserInfo']);
+
+// //[User]ユーザーデータ取得
+// Route::get('/loginuser', [AuthController::class, 'fetchUserSimple']);
+
+// //[admin][Order]orderindexデータ取得
+// Route::get('/admin/orderindex',[ApiAdmiController::class,'orderIndex']);
+
+// //[admin][Order]served→served_flag更新
+// Route::post('/admin/serve/{order_id}',[ApiAdmiController::class,'serveOrder']);
+
+// });
 
 // });
 

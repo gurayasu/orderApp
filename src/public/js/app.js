@@ -25375,7 +25375,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.baseURL) = "https://hackbar-tottori.gacci.jp";
+(axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.baseURL) = "http://localhost";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post["Content-Type"]) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post.Accept) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.withCredentials) = true;
@@ -25600,14 +25600,13 @@ function GlobalNav() {
       console.log(res);
       window.location.href = res.data.redirect_url;
     });
-  };
+  }; // const fetchUser = () => {
+  //     axios.get(`/api/fetchuser`).then((res) => {
+  //         setUserRole(res.data[0].role);
+  //         return res;
+  //     });
+  // };
 
-  var fetchUser = function fetchUser() {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/fetchuser").then(function (res) {
-      setUserRole(res.data[0].role);
-      return res;
-    });
-  };
 
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
 
@@ -25624,20 +25623,15 @@ function GlobalNav() {
     });
   };
 
-  var classes = useStyles();
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      userInfo = _useState4[0],
-      setUserInfo = _useState4[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/loginuser").then(function (res) {
-      console.log(res.data);
-      setUserInfo(res.data);
-    });
-  }, [useOAuthUrl]);
-  console.log(localStorage); // if (!localStorage.getItem("auth_token")) {
+  var classes = useStyles(); // const [userInfo, setUserInfo] = useState("");
+  // useEffect(() => {
+  //     axios.get(`/api/loginuser`).then((res) => {
+  //         console.log(res.data);
+  //         setUserInfo(res.data);
+  //     });
+  // }, [useOAuthUrl]);
+  // console.log(localStorage);
+  // if (!localStorage.getItem("auth_token")) {
   // if (!userInfo) {
   //     return (
   //         <>
