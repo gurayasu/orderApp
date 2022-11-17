@@ -19121,7 +19121,10 @@ var fetchLineMenus = function fetchLineMenus(params) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchMenus": () => (/* binding */ fetchMenus)
+/* harmony export */   "fetchAlcoholMenus": () => (/* binding */ fetchAlcoholMenus),
+/* harmony export */   "fetchFoodMenus": () => (/* binding */ fetchFoodMenus),
+/* harmony export */   "fetchMenus": () => (/* binding */ fetchMenus),
+/* harmony export */   "fetchNonAlcoholMenus": () => (/* binding */ fetchNonAlcoholMenus)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -19130,6 +19133,27 @@ __webpack_require__.r(__webpack_exports__);
 
 var fetchMenus = function fetchMenus() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get(_urls_index__WEBPACK_IMPORTED_MODULE_1__.menusIndex).then(function (res) {
+    return res.data;
+  })["catch"](function (e) {
+    return console.error(e);
+  });
+};
+var fetchAlcoholMenus = function fetchAlcoholMenus() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/menu/alcohol").then(function (res) {
+    return res.data;
+  })["catch"](function (e) {
+    return console.error(e);
+  });
+};
+var fetchNonAlcoholMenus = function fetchNonAlcoholMenus() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/menu/nonalcohol").then(function (res) {
+    return res.data;
+  })["catch"](function (e) {
+    return console.error(e);
+  });
+};
+var fetchFoodMenus = function fetchFoodMenus() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/menu/food").then(function (res) {
     return res.data;
   })["catch"](function (e) {
     return console.error(e);
