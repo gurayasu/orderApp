@@ -20718,7 +20718,7 @@ var AdminTable = function AdminTable(_ref) {
     console.log("order_id", order_id);
     (0,_apis_orders__WEBPACK_IMPORTED_MODULE_3__.serveOrder)(order_id).then(function (data) {
       console.log(data);
-      alert("".concat(order_id, "\u306E\u6CE8\u6587\u3092\u914D\u9054"));
+      alert("".concat(data.table_num, "\u756A\u306E\u6CE8\u6587\u3092\u914D\u9054"));
       location.reload();
     })["catch"](function (e) {
       throw e;
@@ -20738,7 +20738,7 @@ var AdminTable = function AdminTable(_ref) {
               children: "\u5546\u54C1\u540D"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_11__["default"], {
               align: "right",
-              children: "\u30C6\u30FC\u30D6\u30EB\u756A\u53F7"
+              children: "\u6CE8\u6587\u756A\u53F7"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_11__["default"], {
               align: "right",
               children: "\u6570\u91CF"

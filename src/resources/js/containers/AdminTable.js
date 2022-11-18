@@ -33,7 +33,7 @@ export const AdminTable = ({ match }) => {
         serveOrder(order_id)
             .then((data) => {
                 console.log(data);
-                alert(`${order_id}の注文を配達`);
+                alert(`${data.table_num}番の注文を配達`);
                 location.reload();
             })
             .catch((e) => {
@@ -52,7 +52,7 @@ export const AdminTable = ({ match }) => {
                     <TableHead>
                         <TableRow>
                             <TableCell>商品名</TableCell>
-                            <TableCell align="right">テーブル番号</TableCell>
+                            <TableCell align="right">注文番号</TableCell>
                             <TableCell align="right">数量</TableCell>
                             <TableCell align="right">配達フラグ</TableCell>
                             <TableCell align="right">配達</TableCell>
