@@ -94,7 +94,7 @@ class MenusTableSeeder extends Seeder
             [
             'menu_name' => 'ホットサンド',
             'menu_price' => 400,
-            'description'=>'ハム×チーズ×からしマヨネーズのホットサンド。',
+            'description'=>'ハム×チーズ×からしマヨのホットサンド。画像はイメージです。',
             'alcohol'=>3,
             'pictureId'=>'1-Je6qo7iWsm9KT9YAwryfSI_eKmvyRUU'
             ],

@@ -20,7 +20,8 @@ const AmountText = styled.p`
 
 export const OrderDetailItem = ({
     menu_name,
-    menu_price,
+    price,
+    alcohol,
     menu_count,
     tableNumber,
 }) => (
@@ -37,5 +38,11 @@ export const OrderDetailItem = ({
             <p>数量</p>
             <p> {menu_count}</p>
         </LineWrapper>
+        {alcohol == 3 && (
+            <LineWrapper>
+                <p>料金</p>
+                <p> {`￥${price}`}</p>
+            </LineWrapper>
+        )}
     </Fragment>
 );
