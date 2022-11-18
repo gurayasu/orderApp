@@ -28,7 +28,7 @@ class ApiMenuController extends Controller
 
     //[Menu]ノンアルコールメニュー一覧を表示
     public function foodMenu(){
-        $menuIndex = Menu::where("alcohol",2)->get();
+        $menuIndex = Menu::where("alcohol",3)->get();
         return response()->json($menuIndex,200);
     }
 

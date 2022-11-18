@@ -116,6 +116,13 @@ export const MenuOrderDialog = ({
                     </Select>
                 </FormControl>
             </DialogActions> */}
+            {menu.alcohol == 3 && (
+                <DialogActions>
+                    <Typography variant="h6" component="h6">
+                        {`料金：￥${menu.menu_price}`}
+                    </Typography>
+                </DialogActions>
+            )}
             <DialogActions>
                 <CountersWrapper>
                     <CountItem>

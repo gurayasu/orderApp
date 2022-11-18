@@ -163,18 +163,19 @@ export const Menus = ({ match }) => {
         fetchAlcoholMenus().then((data) => {
             setAlcoholMenus(data);
         });
+    }, []);
 
+    useEffect(() => {
         fetchNonAlcoholMenus().then((data) => {
             setNonAlcoholMenus(data);
         });
+    }, []);
 
+    useEffect(() => {
         fetchFoodMenus().then((data) => {
             setFoodMenus(data);
         });
     }, []);
-
-    // console.log("alcoholMenus", alcoholMenus);
-    // console.log("nonAlcoholMenus", nonAlcoholMenus);
 
     const submitOrder = () => {
         fetchLineMenus({
@@ -352,7 +353,7 @@ export const Menus = ({ match }) => {
                         foodMenus &&
                         foodMenus.map((menu) => (
                             <ItemWrapper key={menu.id}>
-                                {menu.alcohol === 0 && (
+                                {menu.alcohol === 3 && (
                                     <MenuWrapper
                                         menu={menu}
                                         onClickMenuWrapper={(menu) =>
