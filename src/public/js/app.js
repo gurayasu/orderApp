@@ -19993,6 +19993,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Buttons_CountUpButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Buttons/CountUpButton */ "./resources/js/components/Buttons/CountUpButton.js");
 /* harmony import */ var _Buttons_CountDownButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Buttons/CountDownButton */ "./resources/js/components/Buttons/CountDownButton.js");
 /* harmony import */ var _Buttons_OrderButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Buttons/OrderButton */ "./resources/js/components/Buttons/OrderButton.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
 
@@ -20054,6 +20055,12 @@ var MenuOrderDialog = function MenuOrderDialog(_ref) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_StyledText__WEBPACK_IMPORTED_MODULE_1__.SubText, {
           children: menu.description
         })
+      })
+    }), menu.alcohol == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        variant: "h6",
+        component: "h6",
+        children: "\u6599\u91D1\uFF1A\uFFE5".concat(menu.menu_price)
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["default"], {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(CountersWrapper, {
@@ -20990,14 +20997,17 @@ var Menus = function Menus(_ref) {
     (0,_apis_menus__WEBPACK_IMPORTED_MODULE_7__.fetchAlcoholMenus)().then(function (data) {
       setAlcoholMenus(data);
     });
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_apis_menus__WEBPACK_IMPORTED_MODULE_7__.fetchNonAlcoholMenus)().then(function (data) {
       setNonAlcoholMenus(data);
     });
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_apis_menus__WEBPACK_IMPORTED_MODULE_7__.fetchFoodMenus)().then(function (data) {
       setFoodMenus(data);
     });
-  }, []); // console.log("alcoholMenus", alcoholMenus);
-  // console.log("nonAlcoholMenus", nonAlcoholMenus);
+  }, []);
 
   var submitOrder = function submitOrder() {
     (0,_apis_line_menus__WEBPACK_IMPORTED_MODULE_11__.fetchLineMenus)({
@@ -21141,7 +21151,7 @@ var Menus = function Menus(_ref) {
           })
         }) : foodMenus && foodMenus.map(function (menu) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(ItemWrapper, {
-            children: menu.alcohol === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_MenuWrapper__WEBPACK_IMPORTED_MODULE_3__.MenuWrapper, {
+            children: menu.alcohol === 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_MenuWrapper__WEBPACK_IMPORTED_MODULE_3__.MenuWrapper, {
               menu: menu,
               onClickMenuWrapper: function onClickMenuWrapper(menu) {
                 return setState(_objectSpread(_objectSpread({}, state), {}, {
