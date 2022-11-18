@@ -20245,7 +20245,8 @@ var LineWrapper = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(
 var AmountText = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].p(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    font-size: ", ";\n    font-weight: bold;\n"])), _style_constants__WEBPACK_IMPORTED_MODULE_2__.FONT_SIZE.STAND_BODY);
 var OrderDetailItem = function OrderDetailItem(_ref) {
   var menu_name = _ref.menu_name,
-      menu_price = _ref.menu_price,
+      price = _ref.price,
+      alcohol = _ref.alcohol,
       menu_count = _ref.menu_count,
       tableNumber = _ref.tableNumber;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -20266,6 +20267,12 @@ var OrderDetailItem = function OrderDetailItem(_ref) {
         children: "\u6570\u91CF"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
         children: [" ", menu_count]
+      })]
+    }), alcohol == 3 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(LineWrapper, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+        children: "\u6599\u91D1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+        children: [" ", "\uFFE5".concat(price)]
       })]
     })]
   });
@@ -21527,10 +21534,20 @@ var Orders = function Orders() {
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      open = _useState2[0],
-      setOpen = _useState2[1];
+      price = _useState2[0],
+      setPrice = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      alcohol = _useState4[0],
+      setAlcohol = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      open = _useState6[0],
+      setOpen = _useState6[1];
 
   var handleClickOpen = function handleClickOpen() {
     setOpen(true);
@@ -21554,6 +21571,8 @@ var Orders = function Orders() {
         }
       });
       console.log("res", data);
+      setPrice(data.menu_price);
+      setAlcohol(data.alcohol);
     })["catch"](function (e) {
       return console.error(e);
     });
@@ -21598,7 +21617,9 @@ var Orders = function Orders() {
             menu_name: state.lineMenusSummary.menu_name,
             menu_price: state.lineMenusSummary.menu_price,
             menu_count: menu_count,
-            tableNumber: tableNumber
+            tableNumber: tableNumber,
+            price: price,
+            alcohol: alcohol
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           children: [state.fetchState === _constants__WEBPACK_IMPORTED_MODULE_7__.REQUEST_STATE.OK && state.lineMenusSummary && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {

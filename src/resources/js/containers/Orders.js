@@ -35,7 +35,10 @@ export const Orders = () => {
     const order_id = location.state.id;
     const tableNumber = location.state.tableNumber;
     // const tableNumber = Math.floor(Math.random() * 20);
+
     const [state, dispatch] = useReducer(lineMenusReducer, initialState);
+    const [price, setPrice] = useState("");
+    const [alcohol, setAlcohol] = useState("");
 
     const [open, setOpen] = useState(false);
 
@@ -60,6 +63,8 @@ export const Orders = () => {
                     },
                 });
                 console.log("res", data);
+                setPrice(data.menu_price);
+                setAlcohol(data.alcohol);
             })
             .catch((e) => console.error(e));
     }, []);
@@ -113,6 +118,8 @@ export const Orders = () => {
                                         }
                                         menu_count={menu_count}
                                         tableNumber={tableNumber}
+                                        price={price}
+                                        alcohol={alcohol}
                                     />
                                 )
                             )
