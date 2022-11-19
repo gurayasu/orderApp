@@ -254,21 +254,6 @@ export default function GlobalNav() {
                         </div>
                     </Fab>
                 </Grid>
-                <Grid item xs={6}>
-                    <Fab variant="extended">
-                        <NavigationIcon className={classes.extendedIcon} />
-                        <div
-                            onClick={() => {
-                                window.open(
-                                    "https://join.slack.com/t/hackbarhq/shared_invite/zt-1ji2hb6c7-8OWPB6xDFAe7d0HWSQDs~Q",
-                                    "_blank"
-                                );
-                            }}
-                        >
-                            Slack参加
-                        </div>
-                    </Fab>
-                </Grid>
             </Grid>
         </>
     );

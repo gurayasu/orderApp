@@ -19782,20 +19782,6 @@ function GlobalNav() {
             children: "README"
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        item: true,
-        xs: 6,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_material_ui_core_Fab__WEBPACK_IMPORTED_MODULE_10__["default"], {
-          variant: "extended",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_icons_Navigation__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            className: classes.extendedIcon
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            onClick: function onClick() {
-              window.open("https://join.slack.com/t/hackbarhq/shared_invite/zt-1ji2hb6c7-8OWPB6xDFAe7d0HWSQDs~Q", "_blank");
-            },
-            children: "Slack\u53C2\u52A0"
-          })]
-        })
       })]
     })
   });
