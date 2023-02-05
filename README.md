@@ -10,6 +10,7 @@ https://user-images.githubusercontent.com/86140172/216852391-fb5c168d-5bbc-40b5-
 * React（フロント）
 * Laravel（バックエンド）
 * AWS EC2（インフラ）
+* AWS RDS(データベース)
 ### 利用できる機能
 カテゴリ別でメニューを閲覧し注文
 ### 実装済みだが使ってない機能
